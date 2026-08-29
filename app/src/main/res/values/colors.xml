@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="error_red">#FF0000</color>
+    <color name="Login_and_Register_BottomText_color">#2290AF</color>
+
+
 </resources>
