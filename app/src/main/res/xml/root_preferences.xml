@@ -1,0 +1,59 @@
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--    Payments info-->
+
+    <Preference
+        app:key="Loyalty_Points"
+        app:title="Loyalty Points"
+        app:summary="Loyalty Points"/>
+
+    <Preference
+        app:key="Transfer"
+        app:title="Transfer"
+        app:summary="Transfer"/>
+
+    <Preference
+        app:key="Payment_Method"
+        app:title="Payment Method"
+        app:summary="Payment Method"/>
+
+<!--    Settings From here -->
+
+    <ListPreference
+        app:key="Language"
+        app:title="Language"
+        app:summary="Language"/>
+
+    <ListPreference
+        app:key="Theme"
+        app:title="Theme"
+        app:summary="Theme"/>
+
+    <SwitchPreferenceCompat
+        app:key="notifications"
+        app:title="Notifications"/>
+
+    <Preference
+        app:key="Cards"
+        app:title="Cards"
+        app:summary="Cards"/>
+
+    <Preference
+        app:key="Contact_Support"
+        app:title="Contact Support"
+        app:summary="Contact Support"/>
+
+<!--    Customer Support-->
+
+    <Preference
+        app:key="Help"
+        app:title="Help"
+        app:summary="Help"/>
+
+    <Preference
+        app:key="Sing Out"
+        app:title="Sing Out"
+        app:summary="Sing Out"/>
+
+</PreferenceScreen>

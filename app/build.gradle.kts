@@ -56,4 +56,7 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
+
+//    Preference
+    implementation("androidx.preference:preference-ktx:1.2.1")
 }
