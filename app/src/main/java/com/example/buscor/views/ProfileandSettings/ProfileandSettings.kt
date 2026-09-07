@@ -12,6 +12,23 @@ import com.example.buscor.views.ProfileandSettings.Cards.Cards
 
 class ProfileandSettings : PreferenceFragmentCompat()  {
 
+
+//    override fun onCreateView(
+//        inflater: LayoutInflater, container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+//        // Inflate the layout for this fragment
+//        val  view = inflater.inflate(R.layout.fragment_profileand_settings,
+//            container,
+//            false)
+//
+//
+////        Code Begins Here
+//
+//
+//        return view
+//    }
+
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
