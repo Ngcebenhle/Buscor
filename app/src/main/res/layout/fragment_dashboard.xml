@@ -3,13 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Login_and_Register_BottomText_color"
     tools:context=".views.Dashboard.Dashboard">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is The Dashboard Fragment"
-        android:textSize="40sp"/>
+        android:layout_height="300dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="60dp">
+
+
+      <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="@drawable/dasboard_side_panels_boarder">
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:background="@drawable/dasboard_side_panels_boarder"
+            android:layout_gravity="end|right">
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!-- Overlay View: Positioned at the bottom center -->
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_border"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="32dp" />
 
 </FrameLayout>
