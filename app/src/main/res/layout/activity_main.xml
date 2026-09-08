@@ -9,7 +9,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/main_fragment_container"
-        android:name="com.example.buscor.views.Dashboard.Dashboard"
+        android:name="com.example.buscor.views.ProfileandSettings.ProfileandSettings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -10,49 +10,24 @@ import androidx.preference.PreferenceFragmentCompat
 import com.example.buscor.R
 import com.example.buscor.views.ProfileandSettings.Cards.Cards
 
-class ProfileandSettings : PreferenceFragmentCompat()  {
+class ProfileandSettings : Fragment()  {
 
 
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        // Inflate the layout for this fragment
-//        val  view = inflater.inflate(R.layout.fragment_profileand_settings,
-//            container,
-//            false)
-//
-//
-////        Code Begins Here
-//
-//
-//        return view
-//    }
-
-    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.root_preferences, rootKey)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val  view = inflater.inflate(R.layout.fragment_profileand_settings,
+            container,
+            false)
 
 
-//        Page switch on Preference click
+//        Code Begins Here
 
 
-        // 1. Find the preference item using its XML key
-        val accountPref: Preference? = findPreference("Loyalty_Points")
-
-        // 2. Set the click listener
-        accountPref?.setOnPreferenceClickListener {
-            // 3. Define the destination fragment
-            val newFragment = Cards()
-
-            // 4. Perform the fragment transaction to replace the current view
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.main_fragment_container, newFragment) // Replace with your container ID
-                .addToBackStack(null) // Allows the user to go back to Settings using the back button
-                .commit()
-
-            true // Return true to indicate the click was handled
-        }
-
-
+        return view
     }
+
+
 }
