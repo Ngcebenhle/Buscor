@@ -33,7 +33,7 @@ class Transfer : Fragment() {
         viewPager.adapter = TransferAdapter(this)
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = arrayOf("Tab One", "Tab Two")[position]
+            tab.text = arrayOf("Cards", "Recipients")[position]
         }.attach()
 
 
