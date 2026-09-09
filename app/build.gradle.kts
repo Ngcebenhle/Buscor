@@ -49,7 +49,6 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.0")
 
 
-
     //    Room Database
     val roomVersion = "2.8.3"
 
@@ -57,6 +56,12 @@ dependencies {
     implementation("androidx.room:room-ktx:$roomVersion")
     ksp("androidx.room:room-compiler:$roomVersion")
 
-//    Preference
+    //  Preference
     implementation("androidx.preference:preference-ktx:1.2.1")
+
+    //  viewModel
+    implementation("androidx.activity:activity-ktx:1.9.1")
+    implementation("androidx.fragment:fragment-ktx:1.8.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
 }
