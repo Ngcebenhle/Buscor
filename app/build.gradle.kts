@@ -64,4 +64,15 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.8.2")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.4")
+
+
+    // Retrofit
+
+    // Retrofit networking core
+    implementation("com.squareup.retrofit2:retrofit:2.11.0")
+    // Converter factory to parse JSON into Kotlin Data Classes
+    implementation("com.squareup.retrofit2:converter-gson:2.11.0")
+
+    // OkHttp Logging Interceptor to see network logs in Logcat
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 }
