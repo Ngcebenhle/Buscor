@@ -31,72 +31,89 @@
               android:layout_width="50dp"
               android:layout_height="wrap_content"
               android:orientation="vertical"
+
               >
 
              <LinearLayout
-                 android:layout_width="match_parent"
+                 android:layout_width="40dp"
                  android:layout_height="wrap_content"
-                 android:background="@drawable/dasboard_side_panels_boarder"
-                 android:orientation="vertical">
+                 android:background="@drawable/dashboard_side_panel_item_border"
+                 android:orientation="vertical"
+                 android:layout_marginBottom="5dp"
+                 android:layout_gravity="center">
 
                  <ImageView
-                     android:layout_width="30dp"
+                     android:layout_width="wrap_content"
                      android:layout_height="30dp"
-                     android:src="@drawable/ticket_svgrepo_com"
+                     android:src="@drawable/search"
                      android:layout_gravity="center"/>
 
                  <TextView
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
                      android:text="Search"
-                     android:layout_gravity="center"/>
+                     android:textSize="10sp"
+                     android:layout_gravity="center"
+                     android:layout_marginBottom="3dp"/>
 
              </LinearLayout>
 
               <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="50dp"
-                  android:background="@drawable/dasboard_side_panels_boarder"
-                  android:orientation="vertical">
+                  android:layout_width="40dp"
+                  android:layout_height="wrap_content"
+                  android:background="@drawable/dashboard_side_panel_item_border"
+                  android:orientation="vertical"
+                  android:layout_marginBottom="5dp"
+                  android:layout_gravity="center">
 
                   <ImageView
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:src=""/>
+                      android:layout_width="wrap_content"
+                      android:layout_height="30dp"
+                      android:src="@drawable/bus_svgrepo_com"
+                      android:layout_gravity="center"/>
 
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Search"/>
+                      android:text="Search"
+                      android:textSize="10sp"
+                      android:layout_gravity="center"
+                      android:layout_marginBottom="3dp"/>
 
               </LinearLayout>
 
               <LinearLayout
-                  android:layout_width="match_parent"
+                  android:layout_width="40dp"
                   android:layout_height="wrap_content"
-                  android:background="@drawable/dasboard_side_panels_boarder"
-                  android:orientation="vertical">
+                  android:background="@drawable/dashboard_side_panel_item_border"
+                  android:orientation="vertical"
+                  android:layout_marginBottom="5dp"
+                  android:layout_gravity="center">
 
                   <ImageView
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:src=""/>
+                      android:layout_width="wrap_content"
+                      android:layout_height="30dp"
+                      android:src="@drawable/ticket_svgrepo_com"
+                      android:layout_gravity="center"/>
 
                   <TextView
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Search"/>
+                      android:text="Search"
+                      android:textSize="10sp"
+                      android:layout_gravity="center"
+                      android:layout_marginBottom="3dp"/>
 
               </LinearLayout>
 
           </LinearLayout>
 
       </LinearLayout>
+
         <LinearLayout
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/dasboard_side_panels_boarder"
             android:layout_gravity="end|right">
 
             <ImageView
@@ -104,14 +121,14 @@
                 android:layout_height="50dp"
                 android:background="@drawable/button_border"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/documents"/>
+                android:src="@drawable/outline_account_circle_24"/>
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/button_border"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/documents"/>
+                android:src="@drawable/settings_svgrepo_com"/>
 
 
             <ImageView
@@ -119,7 +136,7 @@
                 android:layout_height="50dp"
                 android:background="@drawable/button_border"
                 android:layout_marginBottom="20dp"
-                android:src="@drawable/documents"/>
+                android:src="@drawable/location_pin_svgrepo_com"/>
 
         </LinearLayout>
 
@@ -129,8 +146,30 @@
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="50dp"
-        android:background="@drawable/button_border"
+       android:background="@color/white"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="32dp" />
+        android:layout_marginBottom="32dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="116.67dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/maps"/>
+
+        <ImageView
+            android:layout_width="116.67dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/qrcode"/>
+
+        <ImageView
+            android:layout_width="116.67dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/records_svgrepo_com"/>
+
+    </LinearLayout>
+
+
+
+
 
 </FrameLayout>
