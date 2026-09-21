@@ -80,7 +80,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/main_fragment_container"
+            android:id="@+id/settings_fragment_container"
             android:name="com.example.buscor.views.ProfileandSettings.SettingsPreferences"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
