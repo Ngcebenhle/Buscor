@@ -1,7 +1,13 @@
 package com.example.buscor.ViewModels.MainViewModel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.example.buscor.Model.Card.Card
 import com.example.buscor.Model.MainRepository.MainRepository
+import com.example.buscor.Model.PaymentInformation.Paymentinformation
+import com.example.buscor.Model.Trip.Trip
+import com.example.buscor.Model.User.User
+import kotlinx.coroutines.launch
 
 class MainViewModel (private val repository: MainRepository) : ViewModel() {
 
@@ -9,6 +15,8 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
     private var  jwtToken = ""
 
 //    Actionable unctions
+
+
 
 //    User Functions
 
@@ -20,9 +28,14 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
             return ""
         }
 
-        //    Register
-        fun Register(): String{
 
+
+        //    Register
+        fun Register(user: User): String{
+
+            viewModelScope.launch {
+                repository.insertUser(user)
+            }
 
     //        returns the JWT Token
             return ""
@@ -35,8 +48,11 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
         }
 
         //    addTrips
-        fun addTrips(): String{
+        fun addTrips(trip: Trip): String{
 
+            viewModelScope.launch {
+                repository.insertTrip(trip)
+            }
             return ""
         }
 
@@ -51,14 +67,20 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
     //    App Functionality Functions
 
     //    addPaymentMethod
-    fun addPaymentMethod(): String{
+    fun addPaymentMethod(paymentinformation: Paymentinformation): String{
 
+        viewModelScope.launch {
+            repository.insertPaymentInformation(paymentinformation)
+        }
         return ""
     }
 
     //    addPaymentMethod
-    fun getcards(): String{
+    fun addcards(card: Card): String{
 
+        viewModelScope.launch {
+            repository.insertCard(card)
+        }
         return ""
     }
 
@@ -77,6 +99,12 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
 
     //    addPaymentMethod
     fun makePaymet(): String{
+
+        return ""
+    }
+
+    //    addLocation
+    fun addLocation(): String{
 
         return ""
     }

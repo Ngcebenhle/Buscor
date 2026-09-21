@@ -1,4 +1,4 @@
-package com.example.buscor.Model
+package com.example.buscor.Model.Trip
 
 import com.example.buscor.Model.Card.Card
 import com.example.buscor.Model.Location.location
