@@ -10,7 +10,7 @@ class Retrofit {
             .build()
     }
 
-//    val apiInterface by lazy {
-//        retrofit.create(ApiInterface::class.java)
+//    val APIServices by lazy {
+//        retrofit.create(APIServices::class.java)
 //    }
 }

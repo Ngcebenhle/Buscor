@@ -75,4 +75,14 @@ dependencies {
 
     // OkHttp Logging Interceptor to see network logs in Logcat
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+//   MapBox 
+
+
+        implementation("com.mapbox.navigationcore:android:3.32.0-rc.1")
+       // Adds core Navigation SDK functionality
+        // if your app does not require 16 KB page size support, the default dependency without -ndk27 can be used
+        // implementation("com.mapbox.navigationcore:android:3.32.0-rc.1")
+
+
 }
