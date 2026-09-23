@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Login_and_Register_BottomText_color"
     tools:context=".views.Dashboard.Dashboard">
 
 
@@ -146,7 +145,6 @@
     <LinearLayout
         android:layout_width="350dp"
         android:layout_height="50dp"
-       android:background="@color/white"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="32dp"
         android:orientation="horizontal">

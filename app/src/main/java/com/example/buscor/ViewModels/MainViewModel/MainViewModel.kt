@@ -75,7 +75,7 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
         return ""
     }
 
-    //    addPaymentMethod
+    //    addCards
     fun addcards(card: Card): String{
 
         viewModelScope.launch {
@@ -93,6 +93,19 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
 
 
 
+//  API  Services From Here
+suspend fun createUser(request: User): Result<String> {
+    return try {
+        val response = repository.createUser(request)
+        if (response.isSuccessful && response.body() != null) {
+            Result.success(response.body()!!)
+        } else {
+            Result.failure(Exception("Error code: ${response.code()} - ${response.message()}"))
+        }
+    } catch (e: Exception) {
+        Result.failure(e)
+    }
+}
 
 
 
@@ -108,6 +121,8 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
 
         return ""
     }
+
+
 
 
 
