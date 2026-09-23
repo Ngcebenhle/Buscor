@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.app.ActivityCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.mapbox.api.directions.v5.models.RouteOptions
@@ -53,6 +54,7 @@ import com.mapbox.navigation.ui.maps.route.line.api.MapboxRouteLineApi
 import com.mapbox.navigation.ui.maps.route.line.api.MapboxRouteLineView
 import com.mapbox.navigation.ui.maps.route.line.model.MapboxRouteLineApiOptions
 import com.mapbox.navigation.ui.maps.route.line.model.MapboxRouteLineViewOptions
+import kotlin.getValue
 
 class MainActivity : ComponentActivity() {
     private lateinit var mapView: MapView
@@ -86,8 +88,18 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+//        val db = UserDatabase.getDatabase(applicationContext)
+//        val userDao = db.userDao()
+//
+//        val repository by lazy { UserRepository(db.userDao()) }
+//        val viewModel: UserViewModel by viewModels{
+//            MyViewModelFactory(repository)
+//        }
+
         //  splash screen activation
         val splashScreen = installSplashScreen()
+
+
 //
 //        super.onCreate(savedInstanceState)
 //        enableEdgeToEdge()

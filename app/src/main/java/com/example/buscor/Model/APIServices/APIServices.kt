@@ -18,6 +18,8 @@ interface APIServices {
     @POST("posts")
     suspend fun createUser(@Body request: User): Response<String>
 
+    @POST("posts")
+    suspend fun logIn(@Body request: User): Response<String>
 
     @POST("posts")
     suspend fun addTrip(@Body request: Trip)
