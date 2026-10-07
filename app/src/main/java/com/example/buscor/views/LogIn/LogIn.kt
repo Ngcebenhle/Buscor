@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.example.buscor.R
+import com.google.firebase.auth.FirebaseAuth
 import kotlin.getValue
 
 
 class LogIn : Fragment() {
 
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +26,8 @@ class LogIn : Fragment() {
 
 //        Code Begins here
 
+        var currentUser = auth.getCurrentUser()
+
 //        val db = UserDatabase.getDatabase(requireContext().applicationContext)
 //        val userDao = db.userDao()
 //
@@ -32,7 +36,7 @@ class LogIn : Fragment() {
 //            MyViewModelFactory(repository)
 //        }
 
-        return  view
+        return view
     }
 
 

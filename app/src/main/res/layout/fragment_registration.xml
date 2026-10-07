@@ -170,7 +170,8 @@
             android:textColor="@color/black"
             android:backgroundTint="@android:color/transparent"
             android:background="@drawable/button_border"
-            />/>
+
+            />
 
     </LinearLayout>
 
