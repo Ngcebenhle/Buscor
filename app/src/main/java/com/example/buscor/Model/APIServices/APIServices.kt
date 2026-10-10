@@ -1,5 +1,6 @@
 package com.example.buscor.Model.APIServices
 
+import com.example.buscor.Model.APITest
 import com.example.buscor.Model.Card.Card
 import com.example.buscor.Model.PaymentInformation.Paymentinformation
 import com.example.buscor.Model.Trip.Trip
@@ -12,6 +13,18 @@ import retrofit2.http.POST
 
 interface APIServices {
 
+    @GET("end/point")
+    fun Test(): Call<APITest>
+
+//    @GET("end/point")
+//    fun getExampleData(): Call<ExampleResponse>
+//
+//    @GET("end/point")
+//    fun getExampleData(): Call<ExampleResponse>
+//
+//    @GET("end/point")
+//    fun getExampleData(): Call<ExampleResponse>
+//
 //    @GET("end/point")
 //    fun getExampleData(): Call<ExampleResponse>
 

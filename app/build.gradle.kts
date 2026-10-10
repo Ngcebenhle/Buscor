@@ -76,6 +76,7 @@ dependencies {
     // Retrofit networking core
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     // Converter factory to parse JSON into Kotlin Data Classes
+    implementation("com.google.code.gson:gson:2.9.1")
     implementation("com.squareup.retrofit2:converter-gson:2.11.0")
 
     // OkHttp Logging Interceptor to see network logs in Logcat

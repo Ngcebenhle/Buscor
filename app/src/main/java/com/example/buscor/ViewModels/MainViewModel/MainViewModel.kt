@@ -28,8 +28,6 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
             return ""
         }
 
-
-
         //    Register
         fun Register(user: User): String{
 
@@ -56,6 +54,15 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
             return ""
         }
 
+        //     Test
+        fun Test(trip: Trip): String{
+
+           val res = viewModelScope.launch {
+                repository.Test()
+            }
+            return res.toString()
+        }
+
         //    getTrips
         fun getTrips(): String{
 
@@ -63,51 +70,48 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
         }
 
 
+        //    App Functionality Functions
 
-    //    App Functionality Functions
+        //    addPaymentMethod
+        fun addPaymentMethod(paymentinformation: Paymentinformation): String{
 
-    //    addPaymentMethod
-    fun addPaymentMethod(paymentinformation: Paymentinformation): String{
-
-        viewModelScope.launch {
-            repository.insertPaymentInformation(paymentinformation)
+            viewModelScope.launch {
+                repository.insertPaymentInformation(paymentinformation)
+            }
+            return ""
         }
-        return ""
-    }
 
-    //    addCards
-    fun addcards(card: Card): String{
+        //    addCards
+        fun addcards(card: Card): String{
 
-        viewModelScope.launch {
-            repository.insertCard(card)
+            viewModelScope.launch {
+                repository.insertCard(card)
+            }
+            return ""
         }
-        return ""
-    }
 
-    //    transfer
-    fun transfer(): String{
+        //    transfer
+        fun transfer(): String{
 
-        return ""
-    }
-
-
-
-
-//  API  Services From Here
-suspend fun createUser(request: User): Result<String> {
-    return try {
-        val response = repository.createUser(request)
-        if (response.isSuccessful && response.body() != null) {
-            Result.success(response.body()!!)
-        } else {
-            Result.failure(Exception("Error code: ${response.code()} - ${response.message()}"))
+            return ""
         }
-    } catch (e: Exception) {
-        Result.failure(e)
+
+
+
+
+    //  API  Services From Here
+    suspend fun createUser(request: User): Result<String> {
+        return try {
+            val response = repository.createUser(request)
+            if (response.isSuccessful && response.body() != null) {
+                Result.success(response.body()!!)
+            } else {
+                Result.failure(Exception("Error code: ${response.code()} - ${response.message()}"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
-}
-
-
 
 
     //    addPaymentMethod
@@ -121,10 +125,6 @@ suspend fun createUser(request: User): Result<String> {
 
         return ""
     }
-
-
-
-
 
 
 

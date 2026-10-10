@@ -2,12 +2,14 @@ package com.example.buscor.Model.MainRepository
 
 import androidx.room.Dao
 import com.example.buscor.Model.APIServices.APIServices
+import com.example.buscor.Model.APITest
 import com.example.buscor.Model.Card.Card
 import com.example.buscor.Model.DAO.DAO
 import com.example.buscor.Model.PaymentInformation.Paymentinformation
 import com.example.buscor.Model.Trip.Trip
 import com.example.buscor.Model.User.User
 import com.example.buscor.ViewModels.Retrofit.Retrofit
+import retrofit2.Call
 import retrofit2.Response
 
 class MainRepository (private val DAO: DAO, private val apiService: APIServices){
@@ -29,7 +31,9 @@ class MainRepository (private val DAO: DAO, private val apiService: APIServices)
     }
 
 //    Api Services From Here On
-
+    suspend fun Test(): Call<APITest> {
+        return Retrofit.RetrofitInstance.api.Test()
+    }
     suspend fun createUser(request: User): Response<String>{
         return Retrofit.RetrofitInstance.api.createUser(request)
     }

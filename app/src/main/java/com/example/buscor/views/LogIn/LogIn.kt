@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.activityViewModels
 import com.example.buscor.R
 import com.google.firebase.auth.FirebaseAuth
@@ -26,7 +27,12 @@ class LogIn : Fragment() {
 
 //        Code Begins here
 
+        val Register : Button = view.findViewById(R.id.logInButton)
         var currentUser = auth.getCurrentUser()
+
+        Register.setOnClickListener {
+
+        }
 
 //        val db = UserDatabase.getDatabase(requireContext().applicationContext)
 //        val userDao = db.userDao()

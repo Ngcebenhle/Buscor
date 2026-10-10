@@ -163,6 +163,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/registrationRegister"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center"
