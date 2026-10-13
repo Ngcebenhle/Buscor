@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     id("com.google.devtools.ksp")
     alias(libs.plugins.google.gms.google.services)
+
 }
 
 android {
@@ -58,8 +59,8 @@ dependencies {
     val roomVersion = "2.8.3"
 
     implementation("androidx.room:room-runtime:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
-    ksp("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion") // For Coroutines support
+    ksp("androidx.room:room-compiler:$roomVersion") // KSP compiler for processing annotations
 
     //  Preference
     implementation("androidx.preference:preference-ktx:1.2.1")

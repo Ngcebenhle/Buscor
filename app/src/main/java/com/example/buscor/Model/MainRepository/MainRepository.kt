@@ -18,17 +18,17 @@ class MainRepository (private val DAO: DAO, private val apiService: APIServices)
         DAO.Register(user)
     }
 
-    suspend fun insertTrip(trip: Trip){
-        DAO.addTrip(trip)
-    }
-
-    suspend fun insertCard(card: Card){
-        DAO.addCard(card)
-    }
-
-    suspend fun insertPaymentInformation(paymentinformation: Paymentinformation){
-        DAO.paymentInformation(paymentinformation)
-    }
+//    suspend fun insertTrip(trip: Trip){
+//        DAO.addTrip(trip)
+//    }
+//
+//    suspend fun insertCard(card: Card){
+//        DAO.addCard(card)
+//    }
+//
+//    suspend fun insertPaymentInformation(paymentinformation: Paymentinformation){
+//        DAO.paymentInformation(paymentinformation)
+//    }
 
 //    Api Services From Here On
     suspend fun Test(): Call<APITest> {

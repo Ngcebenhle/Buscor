@@ -48,18 +48,19 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
         //    addTrips
         fun addTrips(trip: Trip): String{
 
-            viewModelScope.launch {
-                repository.insertTrip(trip)
-            }
+//            viewModelScope.launch {
+//                repository.insertTrip(trip)
+//            }
             return ""
         }
 
         //     Test
-        fun Test(trip: Trip): String{
+        fun Test(): String{
 
            val res = viewModelScope.launch {
                 repository.Test()
             }
+            println(res)
             return res.toString()
         }
 
@@ -74,19 +75,19 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
 
         //    addPaymentMethod
         fun addPaymentMethod(paymentinformation: Paymentinformation): String{
-
-            viewModelScope.launch {
-                repository.insertPaymentInformation(paymentinformation)
-            }
+//
+//            viewModelScope.launch {
+//                repository.insertPaymentInformation(paymentinformation)
+//            }
             return ""
         }
 
         //    addCards
         fun addcards(card: Card): String{
 
-            viewModelScope.launch {
-                repository.insertCard(card)
-            }
+//            viewModelScope.launch {
+//                repository.insertCard(card)
+//            }
             return ""
         }
 

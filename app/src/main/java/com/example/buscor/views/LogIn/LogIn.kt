@@ -7,9 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.activityViewModels
+import com.example.buscor.Model.APIServices.APIServices
+import com.example.buscor.Model.DAO.DAO
 import com.example.buscor.R
+import com.example.buscor.ViewModels.Database.MainDatabase
+import com.example.buscor.ViewModels.MainViewModel.MainViewModel
+import com.example.buscor.ViewModels.MainViewModelFactory.MainViewModelFactory
+import com.example.buscor.ViewModels.Retrofit.Retrofit
 import com.google.firebase.auth.FirebaseAuth
 import kotlin.getValue
+import  com.example.buscor.Model.MainRepository.MainRepository
 
 
 class LogIn : Fragment() {
@@ -25,22 +32,30 @@ class LogIn : Fragment() {
          container,
          false)
 
-//        Code Begins here
 
-        val Register : Button = view.findViewById(R.id.logInButton)
-        var currentUser = auth.getCurrentUser()
+        val db = MainDatabase.getDatabase(requireContext().applicationContext)
+        val userDao = db.Dao()
+        val retrofitApi = Retrofit.RetrofitInstance.api
 
-        Register.setOnClickListener {
-
+        val repository by lazy { MainRepository(DAO = db.Dao(), apiService = retrofitApi ) }
+        val viewModel: MainViewModel by activityViewModels{
+            MainViewModelFactory(repository)
         }
 
-//        val db = UserDatabase.getDatabase(requireContext().applicationContext)
-//        val userDao = db.userDao()
-//
-//        val repository by lazy { UserRepository(db.userDao()) }
-//        val viewModel: UserViewModel by activityViewModels{
-//            MyViewModelFactory(repository)
-//        }
+//        Code Begins here
+
+
+        val LogIn : Button = view.findViewById(R.id.logInButton)
+//        var currentUser = auth.getCurrentUser()
+
+        LogIn.setOnClickListener {
+
+            val r = viewModel.Test()
+            println("Clicked")
+            println("you" + r)
+            println("done")
+        }
+
 
         return view
     }

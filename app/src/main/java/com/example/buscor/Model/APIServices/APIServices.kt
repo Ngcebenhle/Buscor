@@ -13,7 +13,7 @@ import retrofit2.http.POST
 
 interface APIServices {
 
-    @GET("end/point")
+    @GET("restaurant")
     fun Test(): Call<APITest>
 
 //    @GET("end/point")

@@ -17,14 +17,14 @@ interface DAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun Register(user: User)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addTrip(trip: Trip)
+//    @Insert(onConflict = OnConflictStrategy.IGNORE)
+//    suspend fun addTrip(trip: Trip)
+//
+//    @Insert(onConflict = OnConflictStrategy.IGNORE)
+//    suspend fun addCard(card: Card)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addCard(card: Card)
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun paymentInformation(paymentinformation: Paymentinformation)
+//    @Insert(onConflict = OnConflictStrategy.IGNORE)
+//    suspend fun paymentInformation(paymentinformation: Paymentinformation)
 
 
 //    @Query("SELECT * FROM user_table ORDER BY id ASC")

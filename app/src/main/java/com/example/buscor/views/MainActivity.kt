@@ -8,6 +8,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.buscor.R
+import com.example.buscor.ViewModels.Database.MainDatabase
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
 
-//        val db = UserDatabase.getDatabase(applicationContext)
+//        val db = MainDatabase.getDatabase(applicationContext)
 //        val userDao = db.userDao()
 //
 //        val repository by lazy { UserRepository(db.userDao()) }
