@@ -31,7 +31,7 @@ class MainRepository (private val DAO: DAO, private val apiService: APIServices)
 //    }
 
 //    Api Services From Here On
-    suspend fun Test(): Call<APITest> {
+    suspend fun Test(): Response<APITest> {
         return Retrofit.RetrofitInstance.api.Test()
     }
     suspend fun createUser(request: User): Response<String>{

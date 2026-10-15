@@ -14,7 +14,7 @@ import retrofit2.http.POST
 interface APIServices {
 
     @GET("restaurant")
-    fun Test(): Call<APITest>
+    suspend fun Test(): Response<APITest>
 
 //    @GET("end/point")
 //    fun getExampleData(): Call<ExampleResponse>

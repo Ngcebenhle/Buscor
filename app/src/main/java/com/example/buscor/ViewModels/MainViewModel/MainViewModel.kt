@@ -2,12 +2,14 @@ package com.example.buscor.ViewModels.MainViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.buscor.Model.APITest
 import com.example.buscor.Model.Card.Card
 import com.example.buscor.Model.MainRepository.MainRepository
 import com.example.buscor.Model.PaymentInformation.Paymentinformation
 import com.example.buscor.Model.Trip.Trip
 import com.example.buscor.Model.User.User
 import kotlinx.coroutines.launch
+import okhttp3.Response
 
 class MainViewModel (private val repository: MainRepository) : ViewModel() {
 
@@ -55,13 +57,23 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
         }
 
         //     Test
-        fun Test(): String{
+        fun Test() {
 
-           val res = viewModelScope.launch {
-                repository.Test()
+            viewModelScope.launch {
+
+                try {
+                    val response = repository.Test()
+                    if (response.isSuccessful && response.body() != null) {
+                        println(response.body())
+                    } else {
+                        println("Error")
+                    }
+                } catch (e: Exception) {
+                    println( "Error")
+                }
             }
-            println(res)
-            return res.toString()
+
+
         }
 
         //    getTrips
