@@ -23,7 +23,10 @@
     <ListPreference
         app:key="Language"
         app:title="Language"
-        app:summary="Language"/>
+        app:summary="%s"
+        app:entries="@array/preference_entries"
+        app:entryValues="@array/preference_values"
+        app:defaultValue="option1"/>
 
     <ListPreference
         app:key="Theme"
@@ -52,7 +55,7 @@
         app:summary="Help"/>
 
     <Preference
-        app:key="Sing Out"
+        app:key="Sing_Out"
         app:title="Sing Out"
         app:summary="Sing Out"/>
 

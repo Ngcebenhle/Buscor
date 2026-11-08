@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.messaging)
     implementation(libs.googleid)
     implementation(libs.material)
     testImplementation(libs.junit)
@@ -86,10 +87,12 @@ dependencies {
 //   MapBox 
 
 
-        implementation("com.mapbox.navigationcore:android:3.32.0-rc.1")
+    implementation("com.mapbox.navigationcore:android:3.34.2")
+    implementation("com.mapbox.maps:android:11.34.2")
        // Adds core Navigation SDK functionality
         // if your app does not require 16 KB page size support, the default dependency without -ndk27 can be used
         // implementation("com.mapbox.navigationcore:android:3.32.0-rc.1")
 
-
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+// use latest version
 }

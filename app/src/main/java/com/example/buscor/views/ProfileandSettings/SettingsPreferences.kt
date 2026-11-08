@@ -22,8 +22,6 @@ class SettingsPreferences : PreferenceFragmentCompat() {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
 
-
-
 //        Page switch on Preference click
 
 //        ---------------------------------------------------------------------------
@@ -110,6 +108,94 @@ class SettingsPreferences : PreferenceFragmentCompat() {
             true // Return true to indicate the click was handled
         }
 
+//       ------------------------------------------------------------------------------
+        // 1. Language
+        val Language: Preference? = findPreference("Language")
+
+        // 2. Set the click listener
+        Language?.setOnPreferenceClickListener {
+
+            Log.d("pressed", "it was pressed")
+
+            // 3. Define the destination fragment
+            val landingFragment = Cards()
+
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                setReorderingAllowed(true)
+                replace(R.id.main_fragment_container, landingFragment::class.java, null)
+                addToBackStack(null)
+                commit()
+            }
+
+//            // 4. Perform the fragment transaction to replace the current view
+//            parentFragmentManager.beginTransaction()
+//                .replace(R.id.settings_fragment_container, landingFragment) // Replace with your container ID
+//                .addToBackStack(null) // Allows the user to go back to Settings using the back button
+//                .commit()
+
+            true // Return true to indicate the click was handled
+        }
+
+
+//        ----------------------------------------------------------------------------
+        // 1. Theme
+        val Theme: Preference? = findPreference("Theme")
+
+        // 2. Set the click listener
+        Theme?.setOnPreferenceClickListener {
+
+            Log.d("pressed", "it was pressed")
+
+            // 3. Define the destination fragment
+            val landingFragment = Cards()
+
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                setReorderingAllowed(true)
+                replace(R.id.main_fragment_container, landingFragment::class.java, null)
+                addToBackStack(null)
+                commit()
+            }
+
+//            // 4. Perform the fragment transaction to replace the current view
+//            parentFragmentManager.beginTransaction()
+//                .replace(R.id.settings_fragment_container, landingFragment) // Replace with your container ID
+//                .addToBackStack(null) // Allows the user to go back to Settings using the back button
+//                .commit()
+
+            true // Return true to indicate the click was handled
+        }
+
+
+//        ----------------------------------------------------------------------------
+
+        // 1. Theme
+        val Notifications: Preference? = findPreference("notifications")
+
+        // 2. Set the click listener
+        Notifications?.setOnPreferenceClickListener {
+
+            Log.d("pressed", "it was pressed")
+
+            // 3. Define the destination fragment
+            val landingFragment = Cards()
+
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                setReorderingAllowed(true)
+                replace(R.id.main_fragment_container, landingFragment::class.java, null)
+                addToBackStack(null)
+                commit()
+            }
+
+//            // 4. Perform the fragment transaction to replace the current view
+//            parentFragmentManager.beginTransaction()
+//                .replace(R.id.settings_fragment_container, landingFragment) // Replace with your container ID
+//                .addToBackStack(null) // Allows the user to go back to Settings using the back button
+//                .commit()
+
+            true // Return true to indicate the click was handled
+        }
+
+
 //      -------------------------------------------------------------------------------
         // 1. Cards
         val Cards: Preference? = findPreference("Cards")
@@ -195,4 +281,6 @@ class SettingsPreferences : PreferenceFragmentCompat() {
             true // Return true to indicate the click was handled
         }
     }
+
+//    ---------------------------------------------------------------------------------
 }
