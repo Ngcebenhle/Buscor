@@ -3,28 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.Dashboard.Dashboard"
 
     >
+
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/mapContainer"
+        android:id="@+id/mapFragment"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-         />
+        />
 
-    <!-- Dynamic Tracking Status Floating Indicator -->
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabTrackLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="Center on Me"
-        android:src="@android:drawable/ic_menu_mylocation"
-        tools:ignore="MissingConstraints"
-        android:visibility="gone"/>
+
+
+<!--    <Button-->
+<!--        android:id="@+id/btnNavigate"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Start Turn-by-Turn Navigation"-->
+<!--        android:layout_margin="16dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,30 +36,44 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="80dp"
         android:orientation="vertical"
         android:paddingTop="10dp"
+
        >
 
 
-        <EditText
-            android:layout_width="300dp"
-            android:layout_height="27dp"
-            android:background="@drawable/edit_text_border"
-            android:layout_gravity="center"
-            android:text="@string/search"
-            android:paddingLeft="12sp"
-            />
+<!--        <EditText-->
+<!--            android:id="@+id/searchView"-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="27dp"-->
+<!--            android:background="@drawable/edit_text_border"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="@string/search"-->
+<!--            android:paddingLeft="12sp"-->
+<!--            />-->
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/greybackground"
+            android:iconifiedByDefault="false"
+            android:queryHint="Search location..."
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="274dp"
+            android:layout_height="264dp"
             android:orientation="horizontal"
             android:paddingHorizontal="20dp"
-            android:paddingTop="40dp">
+            android:paddingTop="20dp">
 
 
             <LinearLayout
@@ -215,7 +229,7 @@
             android:src="@drawable/maps"/>
 
         <ImageView
-            android:id="@+id/dashboardQRcodeButton"
+            android:id="@+id/btnNavigate"
             android:layout_width="116.67dp"
             android:layout_height="wrap_content"
             android:src="@drawable/qrcode"/>
