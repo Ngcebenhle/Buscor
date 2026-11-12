@@ -4,25 +4,25 @@
 <!--    Payments info-->
 
     <Preference
-        app:key="Loyalty_Points"
-        app:title="Loyalty Points"
-        app:summary="Loyalty Points"/>
+        app:key="@string/loyalty_points"
+        app:title="@string/loyalty_points"
+        app:summary="@string/loyalty_points"/>
 
     <Preference
-        app:key="Transfer"
-        app:title="Transfer"
-        app:summary="Transfer"/>
+        app:key="@string/transfer"
+        app:title="@string/transfer"
+        app:summary="@string/transfer"/>
 
     <Preference
-        app:key="Payment_Method"
-        app:title="Payment Method"
-        app:summary="Payment Method"/>
+        app:key="@string/payment_method"
+        app:title="@string/payment_method"
+        app:summary="@string/payment_method"/>
 
 <!--    Settings From here -->
 
     <ListPreference
-        app:key="Language"
-        app:title="Language"
+        app:key="@string/language"
+        app:title="@string/language"
         app:summary="%s"
         app:entries="@array/preference_entries"
         app:entryValues="@array/preference_values"
@@ -31,32 +31,35 @@
     <ListPreference
         app:key="Theme"
         app:title="Theme"
-        app:summary="Theme"/>
+        app:summary="%s"
+        app:entries="@array/prefe_entries"
+        app:entryValues="@array/prefe_values"
+        app:defaultValue="option1"/>
 
     <SwitchPreferenceCompat
-        app:key="notifications"
-        app:title="Notifications"/>
+        app:key="@string/notifications"
+        app:title="@string/notifications"/>
 
     <Preference
-        app:key="Cards"
-        app:title="Cards"
-        app:summary="Cards"/>
+        app:key="@string/cards"
+        app:title="@string/cards"
+        app:summary="@string/cards"/>
 
     <Preference
-        app:key="Contact_Support"
-        app:title="Contact Support"
-        app:summary="Contact Support"/>
+        app:key="@string/contact_support"
+        app:title="@string/contact_support"
+        app:summary="@string/contact_support"/>
 
 <!--    Customer Support-->
 
     <Preference
-        app:key="Help"
-        app:title="Help"
-        app:summary="Help"/>
+        app:key="@string/help"
+        app:title="@string/help"
+        app:summary="@string/help"/>
 
     <Preference
-        app:key="Sing_Out"
-        app:title="Sing Out"
-        app:summary="Sing Out"/>
+        app:key="@string/sing_out"
+        app:title="@string/sing_out"
+        app:summary="@string/sing_out"/>
 
 </PreferenceScreen>

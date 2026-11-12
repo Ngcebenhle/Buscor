@@ -10,12 +10,15 @@ data class Trip(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     val userId : String,
-//    val userStartLocation : location,
-//    val userEndLocation : location,
-//    val card : Card,
+    val userStartLocationlat : Int,
+    val userStartLocationLong : Int,
+    val userEndLocationLat : Int,
+    val userEndLocationLong : Int,
+    val cardID : Int,
     val  userStartTime : Int,
     val userEndTime : Int,
     val fairAmount: Double,
-    val date : String
+    val date : String,
+    val isSynced : Boolean = false
 
     )

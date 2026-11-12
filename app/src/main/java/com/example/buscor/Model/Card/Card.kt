@@ -12,5 +12,6 @@ data class Card(
     val cardHolder: String,
     val cvv : Int,
     val extMonth: Int,
-    val expYear : Int
+    val expYear : Int,
+    val isSynced : Boolean = true
 )

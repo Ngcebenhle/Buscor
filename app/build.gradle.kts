@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.androidx.room.ktx)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.messaging)
     implementation(libs.googleid)
@@ -95,4 +96,18 @@ dependencies {
 
     implementation("com.google.android.gms:play-services-maps:18.2.0")
 // use latest version
+
+    // Fragment KTX for easy lifecycle access
+//    implementation("androidx.fragment:fragment-ktx:1.8.5")
+
+    // Google Play Services Maps & Location
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
+
+    implementation("androidx.appcompat:appcompat:1.7.0")
+
+    implementation("com.google.firebase:firebase-messaging-ktx:24.0.0")
+
+    // WorkManager for Background Sync
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
 }

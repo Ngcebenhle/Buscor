@@ -6,13 +6,25 @@
     tools:context=".views.Dashboard.Dashboard"
 
     >
-
-    <!-- For Mapbox v10+ -->
-    <com.mapbox.maps.MapView
-        android:id="@+id/mapView"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mapContainer"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-       />
+        android:layout_height="match_parent"
+         />
+
+    <!-- Dynamic Tracking Status Floating Indicator -->
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabTrackLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Center on Me"
+        android:src="@android:drawable/ic_menu_mylocation"
+        tools:ignore="MissingConstraints"
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,154 +47,155 @@
             android:layout_height="27dp"
             android:background="@drawable/edit_text_border"
             android:layout_gravity="center"
-            android:text="Search"
+            android:text="@string/search"
+            android:paddingLeft="12sp"
             />
 
 
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="274dp"
-        android:orientation="horizontal"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="40dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="274dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="40dp">
 
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/dashboardScheduleButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/button_border"
-                android:src="@drawable/documents" />
 
             <LinearLayout
-                android:layout_width="50dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="vertical">
 
-                >
-
-                <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/dashboard_side_panel_item_border"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/dashboardSearchButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/search" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="3dp"
-                        android:text="Search"
-                        android:textSize="10sp" />
-
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/dashboardScheduleButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/button_border"
+                    android:src="@drawable/documents" />
 
                 <LinearLayout
-                    android:layout_width="40dp"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/dashboard_side_panel_item_border"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
 
-                    <ImageView
-                        android:id="@+id/dashboardBusButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/bus_svgrepo_com" />
+                    >
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginBottom="3dp"
-                        android:text="Search"
-                        android:textSize="10sp" />
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/dashboard_side_panel_item_border"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/dashboardSearchButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/search" />
 
-                <LinearLayout
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/dashboard_side_panel_item_border"
-                    android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="3dp"
+                            android:text="@string/search"
+                            android:textSize="10sp" />
 
-                    <ImageView
-                        android:id="@+id/dashboardTicketButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ticket_svgrepo_com" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="40dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginBottom="3dp"
-                        android:text="Search"
-                        android:textSize="10sp" />
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/dashboard_side_panel_item_border"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/dashboardBusButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/bus_svgrepo_com" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="3dp"
+                            android:text="@string/trip"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/dashboard_side_panel_item_border"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/dashboardTicketButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ticket_svgrepo_com" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="3dp"
+                            android:text="@string/ticket"
+                            android:textSize="10sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|right"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/dashboardLogInButton"
+            <LinearLayout
                 android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/button_border"
-                android:src="@drawable/outline_account_circle_24" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|right"
+                android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/dashboardSettingsButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/button_border"
-                android:src="@drawable/settings_svgrepo_com" />
+                <ImageView
+                    android:id="@+id/dashboardLogInButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/button_border"
+                    android:src="@drawable/outline_account_circle_24" />
 
-
-            <ImageView
-                android:id="@+id/dashboardTripButton"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/button_border"
-                android:src="@drawable/location_pin_svgrepo_com" />
-
-        </LinearLayout>
+                <ImageView
+                    android:id="@+id/dashboardSettingsButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/button_border"
+                    android:src="@drawable/settings_svgrepo_com" />
 
 
-    </FrameLayout>
+                <ImageView
+                    android:id="@+id/dashboardTripButton"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/button_border"
+                    android:src="@drawable/location_pin_svgrepo_com" />
+
+            </LinearLayout>
+
+
+        </FrameLayout>
 
     </LinearLayout>
 

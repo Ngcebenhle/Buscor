@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.example.buscor.R
@@ -21,6 +23,7 @@ class SettingsPreferences : PreferenceFragmentCompat() {
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey)
 
+        val currentLocales = AppCompatDelegate.getApplicationLocales()
 
 //        Page switch on Preference click
 
@@ -113,27 +116,52 @@ class SettingsPreferences : PreferenceFragmentCompat() {
         val Language: Preference? = findPreference("Language")
 
         // 2. Set the click listener
-        Language?.setOnPreferenceClickListener {
+//        Language?.setOnPreferenceClickListener {
+//
+//            Log.d("pressed", "it was pressed")
+//
+//            // 3. Define the destination fragment
+////            val landingFragment = Cards()
+////
+////            requireActivity().supportFragmentManager.beginTransaction().apply {
+////                setReorderingAllowed(true)
+////                replace(R.id.main_fragment_container, landingFragment::class.java, null)
+////                addToBackStack(null)
+////                commit()
+////            }
+//
+////            // 4. Perform the fragment transaction to replace the current view
+////            parentFragmentManager.beginTransaction()
+////                .replace(R.id.settings_fragment_container, landingFragment) // Replace with your container ID
+////                .addToBackStack(null) // Allows the user to go back to Settings using the back button
+////                .commit()
+//
+//            true // Return true to indicate the click was handled
+//        }
 
-            Log.d("pressed", "it was pressed")
+        Language?.setOnPreferenceChangeListener { preference, newValue ->
+            val selectedValue = newValue.toString()
+            Log.d("pressed", selectedValue)
+            // Use selectedValue immediately (e.g., apply theme or update UI)
 
-            // 3. Define the destination fragment
-            val landingFragment = Cards()
-
-            requireActivity().supportFragmentManager.beginTransaction().apply {
-                setReorderingAllowed(true)
-                replace(R.id.main_fragment_container, landingFragment::class.java, null)
-                addToBackStack(null)
-                commit()
+            val targetLocales = if (selectedValue == "en") {
+                LocaleListCompat.getEmptyLocaleList()
+            }
+            else if (selectedValue == "af") {
+                LocaleListCompat.forLanguageTags(selectedValue)
+            }
+            else if (selectedValue == "zu") {
+                LocaleListCompat.forLanguageTags(selectedValue)
             }
 
-//            // 4. Perform the fragment transaction to replace the current view
-//            parentFragmentManager.beginTransaction()
-//                .replace(R.id.settings_fragment_container, landingFragment) // Replace with your container ID
-//                .addToBackStack(null) // Allows the user to go back to Settings using the back button
-//                .commit()
+            else {
+                LocaleListCompat.forLanguageTags(selectedValue)}
 
-            true // Return true to indicate the click was handled
+            // Applies the language immediately and recreates the host Activity
+            AppCompatDelegate.setApplicationLocales(targetLocales)
+
+            // Return true to save the new value to SharedPreferences, false to reject it
+            true
         }
 
 
@@ -142,30 +170,37 @@ class SettingsPreferences : PreferenceFragmentCompat() {
         val Theme: Preference? = findPreference("Theme")
 
         // 2. Set the click listener
-        Theme?.setOnPreferenceClickListener {
+//        Theme?.setOnPreferenceClickListener {
+//
+//            Log.d("pressed", "it was pressed")
+//
+//            // 3. Define the destination fragment
+//            val landingFragment = Cards()
+//
+//            requireActivity().supportFragmentManager.beginTransaction().apply {
+//                setReorderingAllowed(true)
+//                replace(R.id.main_fragment_container, landingFragment::class.java, null)
+//                addToBackStack(null)
+//                commit()
+//            }
+//
+////            // 4. Perform the fragment transaction to replace the current view
+////            parentFragmentManager.beginTransaction()
+////                .replace(R.id.settings_fragment_container, landingFragment) // Replace with your container ID
+////                .addToBackStack(null) // Allows the user to go back to Settings using the back button
+////                .commit()
+//
+//            true // Return true to indicate the click was handled
+//        }
 
-            Log.d("pressed", "it was pressed")
+        Theme?.setOnPreferenceChangeListener { preference, newValue ->
+            val selectedValue = newValue.toString()
+            Log.d("pressed", selectedValue)
+            // Use selectedValue immediately (e.g., apply theme or update UI)
 
-            // 3. Define the destination fragment
-            val landingFragment = Cards()
-
-            requireActivity().supportFragmentManager.beginTransaction().apply {
-                setReorderingAllowed(true)
-                replace(R.id.main_fragment_container, landingFragment::class.java, null)
-                addToBackStack(null)
-                commit()
-            }
-
-//            // 4. Perform the fragment transaction to replace the current view
-//            parentFragmentManager.beginTransaction()
-//                .replace(R.id.settings_fragment_container, landingFragment) // Replace with your container ID
-//                .addToBackStack(null) // Allows the user to go back to Settings using the back button
-//                .commit()
-
-            true // Return true to indicate the click was handled
+            // Return true to save the new value to SharedPreferences, false to reject it
+            true
         }
-
-
 //        ----------------------------------------------------------------------------
 
         // 1. Theme

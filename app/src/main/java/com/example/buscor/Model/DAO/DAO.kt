@@ -17,19 +17,26 @@ interface DAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun Register(user: User)
 
-//    @Insert(onConflict = OnConflictStrategy.IGNORE)
-//    suspend fun addTrip(trip: Trip)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addTrip(trip: Trip)
 //
-//    @Insert(onConflict = OnConflictStrategy.IGNORE)
-//    suspend fun addCard(card: Card)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addCard(card: Card)
 
 //    @Insert(onConflict = OnConflictStrategy.IGNORE)
 //    suspend fun paymentInformation(paymentinformation: Paymentinformation)
 
 
-//    @Query("SELECT * FROM user_table ORDER BY id ASC")
-//    fun logIn(): Flow<List<User>>
-//
+    @Query("SELECT * FROM Trip ORDER BY id ASC")
+    fun geTrip(): List<Trip>
+
+
+
+
+
+    @Query("UPDATE Trip SET isSynced = 1 WHERE id = :id")
+    suspend fun UpdateTrip(id: Int)
+
 //
 //    @Query("SELECT * FROM ExpensesTable WHERE startDate = :startDate AND endDate = :endDate")
 //    fun getAllRecWithDates(startDate: Date,endDate: Date ): Flow<List<ExpensesTable>>

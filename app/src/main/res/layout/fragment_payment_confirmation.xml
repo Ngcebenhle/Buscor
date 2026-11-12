@@ -66,8 +66,7 @@
              <TextView
                  android:layout_width="250dp"
                  android:layout_height="wrap_content"
-                 android:text="This is just a test text to
-                       display how it would look like "
+                 android:text="@string/this_is_just_a_test_text_to_display_how_it_would_look_like"
                  android:textAlignment="center"
                  android:textSize="15sp"
                  app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +93,7 @@
                  <TextView
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Tranfere Amount"
+                     android:text="@string/tranfere_amount"
                      android:layout_gravity="center"
                      android:layout_weight="1"/>
 
@@ -117,7 +116,7 @@
                  <TextView
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="To:"
+                     android:text="@string/to"
                      android:layout_gravity="center"
                      android:layout_weight="1"/>
 
@@ -140,7 +139,7 @@
                  <TextView
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Email:"
+                     android:text="@string/emailT"
                      android:layout_gravity="center"
                      android:layout_weight="1"/>
 
@@ -163,7 +162,7 @@
                  <TextView
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Transaction Date:"
+                     android:text="@string/transaction_date"
                      android:layout_gravity="center"
                      android:layout_weight="1"/>
 
@@ -186,7 +185,7 @@
                  <TextView
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Transaction ID:"
+                     android:text="@string/transaction_id"
                      android:layout_gravity="center"
                      android:layout_weight="1"/>
 
@@ -209,7 +208,7 @@
                  <TextView
                      android:layout_width="wrap_content"
                      android:layout_height="wrap_content"
-                     android:text="Reference ID:"
+                     android:text="@string/reference_id"
                      android:layout_gravity="center"
                      android:layout_weight="1"/>
 
@@ -260,14 +259,14 @@
              <TextView
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:text="Note"
+                 android:text="@string/note"
                  android:textSize="15sp"
                  android:layout_marginBottom="5dp"/>
 
              <TextView
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a"
+                 android:text="@string/lorem_ipsum_is_simply_dummy_text_of_the_printing_and_typesetting_industry_lorem_ipsum_has_been_the_industry_s_standard_dummy_text_ever_since_1966_when_designers_at_letraset_and_james_mosley_the_librarian_at_st_bride_printing_library_in_london_took_a"
                  android:textSize="13sp"/>
 
          </LinearLayout>

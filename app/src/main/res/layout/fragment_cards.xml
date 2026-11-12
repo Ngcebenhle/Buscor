@@ -31,7 +31,7 @@
                android:layout_height="wrap_content"
                android:layout_gravity="center"
                android:layout_weight="1"
-               android:text="Cards"
+               android:text="@string/cards"
                android:textAlignment="center"
                android:textSize="23sp" />
 
@@ -104,7 +104,7 @@
            <Button
                android:layout_width="118dp"
                android:layout_height="50dp"
-               android:text="Edit Profile"
+               android:text="@string/edit_profile"
                app:layout_constraintBottom_toBottomOf="parent"
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintHorizontal_bias="0.5"

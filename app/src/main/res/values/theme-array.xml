@@ -1,0 +1,10 @@
+<resources>
+    <string-array name="prefe_entries">
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+    <string-array name="prefe_values">
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+</resources>

@@ -8,12 +8,11 @@ import com.example.buscor.Model.Location.location
 data class User(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val  Userid : String,
+    val  isSynced : Boolean,
     val  auth : String,
     val  name : String,
     val  email : String,
     val  password : String,
-    val  number : String,
+    val  number : Int
 //    val  location : location,
-
     )
