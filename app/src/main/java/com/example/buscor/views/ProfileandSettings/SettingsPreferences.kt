@@ -144,18 +144,18 @@ class SettingsPreferences : PreferenceFragmentCompat() {
             Log.d("pressed", selectedValue)
             // Use selectedValue immediately (e.g., apply theme or update UI)
 
-            val targetLocales = if (selectedValue == "en") {
-                LocaleListCompat.getEmptyLocaleList()
-            }
-            else if (selectedValue == "af") {
-                LocaleListCompat.forLanguageTags(selectedValue)
-            }
-            else if (selectedValue == "zu") {
-                LocaleListCompat.forLanguageTags(selectedValue)
-            }
-
-            else {
-                LocaleListCompat.forLanguageTags(selectedValue)}
+            val targetLocales =  LocaleListCompat.forLanguageTags(selectedValue)
+//                if (selectedValue == "en") {
+//                LocaleListCompat.forLanguageTags(selectedValue)
+//            }
+//            else if (selectedValue == "af") {
+//                LocaleListCompat.forLanguageTags(selectedValue)
+//            }
+//            else if (selectedValue == "zu") {
+//                LocaleListCompat.forLanguageTags(selectedValue)
+//            }
+//            else {
+//                LocaleListCompat.forLanguageTags(selectedValue)}
 
             // Applies the language immediately and recreates the host Activity
             AppCompatDelegate.setApplicationLocales(targetLocales)

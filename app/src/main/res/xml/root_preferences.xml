@@ -21,7 +21,7 @@
 <!--    Settings From here -->
 
     <ListPreference
-        app:key="@string/language"
+        app:key="Language"
         app:title="@string/language"
         app:summary="%s"
         app:entries="@array/preference_entries"

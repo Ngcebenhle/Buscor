@@ -30,17 +30,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_marginTop="40dp"
         android:background="@android:color/transparent">
 
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:orientation="vertical"
+        android:layout_height="60dp"
         android:paddingTop="10dp"
-
        >
+<!--        android:orientation="vertical"-->
 
 
 <!--        <EditText-->
@@ -56,14 +56,10 @@
             android:id="@+id/searchView"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_margin="10dp"
             android:background="@drawable/greybackground"
             android:iconifiedByDefault="false"
-            android:queryHint="Search location..."
-            android:layout_marginTop="20dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_marginHorizontal="10dp"
+            android:queryHint="Search location..." />
 
 
     </LinearLayout>
@@ -73,7 +69,7 @@
             android:layout_height="264dp"
             android:orientation="horizontal"
             android:paddingHorizontal="20dp"
-            android:paddingTop="20dp">
+            android:paddingTop="10dp">
 
 
             <LinearLayout

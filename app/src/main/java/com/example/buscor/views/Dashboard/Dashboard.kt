@@ -30,6 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.PolylineOptions
 import com.example.buscor.R
 import com.example.buscor.views.LogIn.LogIn
+import com.example.buscor.views.ProfileandSettings.Cards.Cards
 import com.example.buscor.views.ProfileandSettings.LoyaltyPoints.LoyaltyPoints
 import com.example.buscor.views.ProfileandSettings.ProfileandSettings
 import java.util.Locale
@@ -77,6 +78,70 @@ class Dashboard : Fragment(), OnMapReadyCallback {
                 startTurnByTurnNavigation(latLng.latitude, latLng.longitude)
             } ?: Toast.makeText(requireContext(), "Please search and select a location first", Toast.LENGTH_SHORT).show()
         }
+
+        val LogIn = view.findViewById<ImageView>(R.id.dashboardLogInButton)
+        val Settings = view.findViewById<ImageView>(R.id.dashboardSettingsButton)
+        val Location = view.findViewById<ImageView>(R.id.dashboardTripButton)
+
+
+            LogIn.setOnClickListener {
+
+                val landingFragment = LogIn()
+
+                requireActivity().supportFragmentManager.beginTransaction().apply {
+                    setReorderingAllowed(true)
+                    replace(R.id.main_fragment_container, landingFragment::class.java, null)
+                    addToBackStack(null)
+                    commit()
+                }
+            }
+
+            Settings.setOnClickListener {
+                val landingFragment = ProfileandSettings()
+
+                requireActivity().supportFragmentManager.beginTransaction().apply {
+                    setReorderingAllowed(true)
+                    replace(R.id.main_fragment_container, landingFragment::class.java, null)
+                    addToBackStack(null)
+                    commit()
+                }
+            }
+
+            Location.setOnClickListener {
+
+            }
+
+
+        val Schedule = view.findViewById<ImageView>(R.id.dashboardScheduleButton)
+        val Bus = view.findViewById<ImageView>(R.id.dashboardBusButton)
+        val Ticket = view.findViewById<ImageView>(R.id.dashboardTicketButton)
+
+            Schedule.setOnClickListener {
+                val landingFragment = com.example.buscor.views.Schedules.Schedule()
+
+                requireActivity().supportFragmentManager.beginTransaction().apply {
+                    setReorderingAllowed(true)
+                    replace(R.id.main_fragment_container, landingFragment::class.java, null)
+                    addToBackStack(null)
+                    commit()
+                }
+            }
+            Bus.setOnClickListener {
+
+            }
+            Ticket.setOnClickListener {
+
+            }
+
+        val Maps = view.findViewById<ImageView>(R.id.dashboardMapsButton)
+        val Logs = view.findViewById<ImageView>(R.id.dashboardTripLogsButton)
+
+            Maps.setOnClickListener {
+
+            }
+            Logs.setOnClickListener {
+
+            }
     }
 
     override fun onMapReady(map: GoogleMap) {
