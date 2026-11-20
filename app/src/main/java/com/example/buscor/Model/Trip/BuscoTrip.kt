@@ -4,14 +4,8 @@ import com.example.buscor.Model.Card.Card
 import com.example.buscor.Model.Location.location
 
 data class BuscoTrip(
-    val id: Int = 0,
-    val userId : String,
-    val userStartLocation : location,
-    val userEndLocation : location,
-    val card : Card,
-    val  userStartTime : Int,
-    val userEndTime : Int,
+    val userStartLocation : String,
+    val userEndLocation : String,
     val fairAmount: Double,
-    val date : String,
     val isSynced : Boolean = false
 )

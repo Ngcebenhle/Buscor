@@ -1,39 +1,43 @@
 package com.example.buscor.views.Dashboard
 
-import android.Manifest
+import SyncWorker
+import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.location.Geocoder
-import android.location.Location
 import android.net.Uri
 import android.os.Bundle
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.buscor.Model.Schedule.Schedule
+import androidx.fragment.app.activityViewModels
+import androidx.work.Constraints
+import androidx.work.ExistingWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import com.example.buscor.Model.MainRepository.MainRepository
+import com.example.buscor.Model.Trip.Trip
 //import androidx.fragment.app.Fragment
-import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.android.gms.maps.model.PolylineOptions
 import com.example.buscor.R
+import com.example.buscor.ViewModels.Database.MainDatabase
+import com.example.buscor.ViewModels.MainViewModel.MainViewModel
+import com.example.buscor.ViewModels.MainViewModelFactory.MainViewModelFactory
+import com.example.buscor.ViewModels.Retrofit.Retrofit
 import com.example.buscor.views.LogIn.LogIn
-import com.example.buscor.views.ProfileandSettings.Cards.Cards
-import com.example.buscor.views.ProfileandSettings.LoyaltyPoints.LoyaltyPoints
 import com.example.buscor.views.ProfileandSettings.ProfileandSettings
+import com.example.buscor.views.Trip.Trips
 import java.util.Locale
+import kotlin.getValue
 
 
 class Dashboard : Fragment(), OnMapReadyCallback {
@@ -49,8 +53,45 @@ class Dashboard : Fragment(), OnMapReadyCallback {
         return inflater.inflate(R.layout.fragment_dashboard, container, false)
     }
 
+
+    private fun triggerBackgroundSync() {
+        val constraints = Constraints.Builder()
+            .setRequiredNetworkType(NetworkType.CONNECTED) // Only run when online
+            .build()
+
+        val syncRequest = OneTimeWorkRequestBuilder<SyncWorker>()
+            .setConstraints(constraints)
+            .build()
+
+        // ExistingWorkPolicy.APPEND_OR_REPLACE ensures multiple rapid offline saves
+        // don't cancel each other out before syncing
+        WorkManager.getInstance(requireContext()).enqueueUniqueWork(
+            "OfflineDataSync",
+            ExistingWorkPolicy.APPEND_OR_REPLACE,
+            syncRequest
+        )
+    }
+
+    @SuppressLint("SuspiciousIndentation")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        triggerBackgroundSync()
+
+        val db = MainDatabase.getDatabase(requireContext().applicationContext)
+        val userDao = db.Dao()
+        val retrofitApi = Retrofit.RetrofitInstance.api
+
+        val repository by lazy {
+            MainRepository(
+                DAO = db.Dao(), apiService = retrofitApi,
+                context = requireContext()
+            )
+        }
+        val viewModel: MainViewModel by activityViewModels {
+            MainViewModelFactory(repository)
+        }
+
 
         // Obtain SupportMapFragment
         val mapFragment = childFragmentManager
@@ -76,7 +117,11 @@ class Dashboard : Fragment(), OnMapReadyCallback {
         btnNavigate.setOnClickListener {
             selectedLatLng?.let { latLng ->
                 startTurnByTurnNavigation(latLng.latitude, latLng.longitude)
-            } ?: Toast.makeText(requireContext(), "Please search and select a location first", Toast.LENGTH_SHORT).show()
+            } ?: Toast.makeText(
+                requireContext(),
+                "Please search and select a location first",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         val LogIn = view.findViewById<ImageView>(R.id.dashboardLogInButton)
@@ -84,64 +129,99 @@ class Dashboard : Fragment(), OnMapReadyCallback {
         val Location = view.findViewById<ImageView>(R.id.dashboardTripButton)
 
 
-            LogIn.setOnClickListener {
+        LogIn.setOnClickListener {
 
-                val landingFragment = LogIn()
+            val landingFragment = LogIn()
 
-                requireActivity().supportFragmentManager.beginTransaction().apply {
-                    setReorderingAllowed(true)
-                    replace(R.id.main_fragment_container, landingFragment::class.java, null)
-                    addToBackStack(null)
-                    commit()
-                }
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                setReorderingAllowed(true)
+                replace(R.id.main_fragment_container, landingFragment::class.java, null)
+                addToBackStack(null)
+                commit()
             }
+        }
 
-            Settings.setOnClickListener {
-                val landingFragment = ProfileandSettings()
+        Settings.setOnClickListener {
 
-                requireActivity().supportFragmentManager.beginTransaction().apply {
-                    setReorderingAllowed(true)
-                    replace(R.id.main_fragment_container, landingFragment::class.java, null)
-                    addToBackStack(null)
-                    commit()
-                }
+//                    viewModel.Test()
+
+//                      viewModel.addCard("testdata","1",3432,"tender",887,12,28,true)
+//                        viewModel.getTrip()
+//                        viewModel.getCard()
+
+
+//
+//
+//
+//
+//
+//
+//                  viewModel.addTrip(Trip(
+//                      userId = "test id",
+//                      userStartLocationlat = 665,
+//                      userStartLocationLong = 6625,
+//                      userEndLocationLat = 6658,
+//                      userEndLocationLong = 3325,
+//                      cardID = 1,
+//                      userStartTime = 25,
+//                      userEndTime = 63,
+//                      fairAmount = 14.0,
+//                      date = "2215",
+//                      isSynced = false
+//                  ))
+
+            val landingFragment = ProfileandSettings()
+
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                setReorderingAllowed(true)
+                replace(R.id.main_fragment_container, landingFragment::class.java, null)
+                addToBackStack(null)
+                commit()
             }
+        }
 
-            Location.setOnClickListener {
+        Location.setOnClickListener {
 
-            }
+        }
 
 
         val Schedule = view.findViewById<ImageView>(R.id.dashboardScheduleButton)
         val Bus = view.findViewById<ImageView>(R.id.dashboardBusButton)
         val Ticket = view.findViewById<ImageView>(R.id.dashboardTicketButton)
 
-            Schedule.setOnClickListener {
-                val landingFragment = com.example.buscor.views.Schedules.Schedule()
+        Schedule.setOnClickListener {
+            val landingFragment = com.example.buscor.views.Schedules.Schedule()
 
-                requireActivity().supportFragmentManager.beginTransaction().apply {
-                    setReorderingAllowed(true)
-                    replace(R.id.main_fragment_container, landingFragment::class.java, null)
-                    addToBackStack(null)
-                    commit()
-                }
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                setReorderingAllowed(true)
+                replace(R.id.main_fragment_container, landingFragment::class.java, null)
+                addToBackStack(null)
+                commit()
             }
-            Bus.setOnClickListener {
+        }
+        Bus.setOnClickListener {
 
-            }
-            Ticket.setOnClickListener {
+        }
+        Ticket.setOnClickListener {
 
-            }
+        }
 
         val Maps = view.findViewById<ImageView>(R.id.dashboardMapsButton)
         val Logs = view.findViewById<ImageView>(R.id.dashboardTripLogsButton)
 
-            Maps.setOnClickListener {
+        Maps.setOnClickListener {
 
-            }
-            Logs.setOnClickListener {
+        }
+        Logs.setOnClickListener {
+            val landingFragment = Trips()
 
+            requireActivity().supportFragmentManager.beginTransaction().apply {
+                setReorderingAllowed(true)
+                replace(R.id.main_fragment_container, landingFragment::class.java, null)
+                addToBackStack(null)
+                commit()
             }
+        }
     }
 
     override fun onMapReady(map: GoogleMap) {

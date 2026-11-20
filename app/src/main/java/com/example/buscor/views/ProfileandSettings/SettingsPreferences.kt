@@ -7,9 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.os.LocaleListCompat
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.SwitchPreferenceCompat
 import com.example.buscor.R
 import com.example.buscor.views.Dashboard.Dashboard
 import com.example.buscor.views.ProfileandSettings.Cards.Cards
@@ -115,29 +117,7 @@ class SettingsPreferences : PreferenceFragmentCompat() {
         // 1. Language
         val Language: Preference? = findPreference("Language")
 
-        // 2. Set the click listener
-//        Language?.setOnPreferenceClickListener {
-//
-//            Log.d("pressed", "it was pressed")
-//
-//            // 3. Define the destination fragment
-////            val landingFragment = Cards()
-////
-////            requireActivity().supportFragmentManager.beginTransaction().apply {
-////                setReorderingAllowed(true)
-////                replace(R.id.main_fragment_container, landingFragment::class.java, null)
-////                addToBackStack(null)
-////                commit()
-////            }
-//
-////            // 4. Perform the fragment transaction to replace the current view
-////            parentFragmentManager.beginTransaction()
-////                .replace(R.id.settings_fragment_container, landingFragment) // Replace with your container ID
-////                .addToBackStack(null) // Allows the user to go back to Settings using the back button
-////                .commit()
-//
-//            true // Return true to indicate the click was handled
-//        }
+
 
         Language?.setOnPreferenceChangeListener { preference, newValue ->
             val selectedValue = newValue.toString()
@@ -169,66 +149,33 @@ class SettingsPreferences : PreferenceFragmentCompat() {
         // 1. Theme
         val Theme: Preference? = findPreference("Theme")
 
-        // 2. Set the click listener
-//        Theme?.setOnPreferenceClickListener {
-//
-//            Log.d("pressed", "it was pressed")
-//
-//            // 3. Define the destination fragment
-//            val landingFragment = Cards()
-//
-//            requireActivity().supportFragmentManager.beginTransaction().apply {
-//                setReorderingAllowed(true)
-//                replace(R.id.main_fragment_container, landingFragment::class.java, null)
-//                addToBackStack(null)
-//                commit()
-//            }
-//
-////            // 4. Perform the fragment transaction to replace the current view
-////            parentFragmentManager.beginTransaction()
-////                .replace(R.id.settings_fragment_container, landingFragment) // Replace with your container ID
-////                .addToBackStack(null) // Allows the user to go back to Settings using the back button
-////                .commit()
-//
-//            true // Return true to indicate the click was handled
-//        }
 
-        Theme?.setOnPreferenceChangeListener { preference, newValue ->
-            val selectedValue = newValue.toString()
-            Log.d("pressed", selectedValue)
-            // Use selectedValue immediately (e.g., apply theme or update UI)
 
-            // Return true to save the new value to SharedPreferences, false to reject it
+        Theme?.setOnPreferenceChangeListener { _, newValue ->
+
+            applyTheme(newValue as String)
+
+            Log.d("Theme", newValue)
             true
         }
 //        ----------------------------------------------------------------------------
 
         // 1. Theme
-        val Notifications: Preference? = findPreference("notifications")
+        val Notifications = findPreference<SwitchPreferenceCompat>("notifications")
 
         // 2. Set the click listener
-        Notifications?.setOnPreferenceClickListener {
+        Notifications?.setOnPreferenceChangeListener { _, newValue ->
+                val isEnabled = newValue as Boolean
 
-            Log.d("pressed", "it was pressed")
+            Log.d("Theme", newValue.toString())
+                if (!isEnabled) {
+                    // Cancel any active notifications immediately when turned off
+                    NotificationManagerCompat.from(requireContext()).cancelAll()
+                }
 
-            // 3. Define the destination fragment
-            val landingFragment = Cards()
-
-            requireActivity().supportFragmentManager.beginTransaction().apply {
-                setReorderingAllowed(true)
-                replace(R.id.main_fragment_container, landingFragment::class.java, null)
-                addToBackStack(null)
-                commit()
+                // Return true to save the new state to SharedPreferences
+                true
             }
-
-//            // 4. Perform the fragment transaction to replace the current view
-//            parentFragmentManager.beginTransaction()
-//                .replace(R.id.settings_fragment_container, landingFragment) // Replace with your container ID
-//                .addToBackStack(null) // Allows the user to go back to Settings using the back button
-//                .commit()
-
-            true // Return true to indicate the click was handled
-        }
 
 
 //      -------------------------------------------------------------------------------
@@ -318,4 +265,12 @@ class SettingsPreferences : PreferenceFragmentCompat() {
     }
 
 //    ---------------------------------------------------------------------------------
+private fun applyTheme(themeValue: String) {
+    val mode = when (themeValue) {
+        "light" -> AppCompatDelegate.MODE_NIGHT_NO
+        "dark" -> AppCompatDelegate.MODE_NIGHT_YES
+        else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+    }
+    AppCompatDelegate.setDefaultNightMode(mode)
+}
 }

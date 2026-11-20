@@ -4,17 +4,17 @@
 <!--    Payments info-->
 
     <Preference
-        app:key="@string/loyalty_points"
+        app:key="Loyalty_Points"
         app:title="@string/loyalty_points"
         app:summary="@string/loyalty_points"/>
 
     <Preference
-        app:key="@string/transfer"
+        app:key="Transfer"
         app:title="@string/transfer"
         app:summary="@string/transfer"/>
 
     <Preference
-        app:key="@string/payment_method"
+        app:key="Payment_Method"
         app:title="@string/payment_method"
         app:summary="@string/payment_method"/>
 
@@ -36,24 +36,31 @@
         app:entryValues="@array/prefe_values"
         app:defaultValue="option1"/>
 
+<!--    <SwitchPreferenceCompat-->
+<!--        app:key="notifications"-->
+<!--        app:title="@string/notifications"/>-->
+
     <SwitchPreferenceCompat
-        app:key="@string/notifications"
-        app:title="@string/notifications"/>
+        app:key="notifications"
+        app:title="Enable Notifications"
+        app:summaryOn="You will receive app notifications"
+        app:summaryOff="Notifications are turned off"
+        app:defaultValue="true" />
 
     <Preference
-        app:key="@string/cards"
+        app:key="Cards"
         app:title="@string/cards"
         app:summary="@string/cards"/>
 
     <Preference
-        app:key="@string/contact_support"
+        app:key="Contact_Support"
         app:title="@string/contact_support"
         app:summary="@string/contact_support"/>
 
 <!--    Customer Support-->
 
     <Preference
-        app:key="@string/help"
+        app:key="Help"
         app:title="@string/help"
         app:summary="@string/help"/>
 

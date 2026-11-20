@@ -4,10 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.buscor.views.ProfileandSettings.Cards.BankingCardsView
 import com.example.buscor.views.ProfileandSettings.Cards.BusCardsView
-import com.example.buscor.views.ProfileandSettings.Transferes.TranfereRecipientView
-import com.example.buscor.views.ProfileandSettings.Transferes.TransferCardsView
 
-class CardsAdapter (fragment: Fragment) : FragmentStateAdapter(fragment) {
+class CardsAdapter (fragment: Fragment, tabCount: Int) : FragmentStateAdapter(fragment) {
 
     // Total number of tabs
     override fun getItemCount(): Int = 2

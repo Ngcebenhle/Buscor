@@ -12,38 +12,103 @@ import com.example.buscor.Model.User.loggedIn
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface APIServices {
 
     @GET("restaurant")
     suspend fun Test(): Response<APITest>
 
-    @GET("/busco/login")
-    fun logIn(): Response<loggedIn>
-
-    @GET("end/point")
-     suspend fun getTrip(): List<Trip>
-
 //    @GET("end/point")
-//    fun getTrip(): Response<BuscoTrip>
+//     suspend fun getTrip(): List<Trip>
 
-    @GET("end/point")
+    @GET("order/user/trip")
+    suspend fun getTrips() : List<Trip>
+
+    @GET("order/user/trip")
+    suspend fun getTripsForPlain() : Response<BuscoTrip>
+
+    @GET("order/user/card")
    suspend fun getCard(): Response<BuscoCard>
-//
-//    @GET("end/point")
-//    fun getExampleData(): Call<ExampleResponse>
 
-    @POST("/busco/signup")
-    suspend fun createUser(@Body request: BuscoUser): Response<BuscoUser>
+    @GET("end/point")
+    suspend fun getUser(): Response<BuscoUser>
 
-    @POST("posts")
-    suspend fun addTrip(@Body request: Trip) : Response<Trip>
 
-    @POST("posts")
-    suspend fun addCard(@Body request: Card)
 
-//    @POST("posts")
-//    suspend fun addPaymentinformation(@Body request: Paymentinformation)
+    //    @Header("Authorization") token : String,
+    @GET("user/busco/login")
+    suspend fun logIn(
+
+        @Query("email") email : String,
+        @Query("password") password : String
+    ) : Response<loggedIn>
+
+
+    @FormUrlEncoded
+    @POST("user/busco/signup")
+    suspend fun signup(
+        @Field("name") name : String,
+        @Field("email") email : String,
+        @Field("password") password : String,
+        @Field("type") type : String,
+        @Field("isSynced") isSynced : Boolean
+    ) : Response<BuscoUser>
+
+
+    @FormUrlEncoded
+    @POST("order/addTrip")
+    suspend fun addTrip(
+        @Header("Authorization") token : String,
+        @Field("amount") amount : Double,
+        @Field("userStartLocation") userStartLocation : String,
+        @Field("userEndLocation") userEndLocation : String,
+        @Field("isSynced") isSynced : Boolean
+    ) : Response<BuscoTrip>
+
+    @FormUrlEncoded
+    @POST("item/create/item")
+    suspend fun addTripForSync(
+        @Header("Authorization") token : String,
+        @Field("userID") userID : String,
+        @Field("amount") amount : Double,
+        @Field("userStartLocation") userStartLocation : String,
+        @Field("userEndLocation") userEndLocation : String,
+        @Field("isSynced") isSynced : Boolean
+    ) : Response<BuscoTrip>
+
+    @FormUrlEncoded
+    @POST("order/addCard")
+    suspend fun addCard(
+        @Header("Authorization") token : String,
+        @Field("userId") userID : String,
+        @Field("cardNumber") cardNumber : Int,
+        @Field("cardHolder") cardHolder : String,
+        @Field("cvv") cvv : Int,
+        @Field("extMonth") extMonth : Int,
+        @Field("expYear") expYear : Int,
+        @Field("isSynced") isSynced : Boolean
+    ) : Response<BuscoCard>
+
+
+    @FormUrlEncoded
+    @POST("item/create/item")
+    suspend fun addCardForSync(
+        @Header("Authorization") token : String,
+        @Field("userId") userID : String,
+        @Field("cardNumber") cardNumber : Int,
+        @Field("cardHolder") cardHolder : String,
+        @Field("cvv") cvv : Int,
+        @Field("extMonth") extMonth : Int,
+        @Field("expYear") expYear : Int,
+        @Field("isSynced") isSynced : Boolean
+    ) : Response<BuscoCard>
+
+
+
 }

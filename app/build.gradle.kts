@@ -44,6 +44,7 @@ dependencies {
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.core.ktx)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.messaging)
     implementation(libs.googleid)

@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.example.buscor.Model.APIServices.APIServices
 import com.example.buscor.Model.DAO.DAO
 import com.example.buscor.R
@@ -22,6 +23,7 @@ import kotlin.getValue
 import  com.example.buscor.Model.MainRepository.MainRepository
 import com.example.buscor.views.Dashboard.Dashboard
 import com.example.buscor.views.Registration.Registration
+import kotlinx.coroutines.launch
 
 
 class LogIn : Fragment() {
@@ -73,6 +75,13 @@ class LogIn : Fragment() {
                 return@setOnClickListener
             }else{
                 loginUser(email.text.toString().trim(), password.text.toString())
+
+                lifecycleScope.launch {
+                    val id : Int = repository.logIn(email = "me@gmail.com",password= "123456789")
+                    println("Logged In"+ id)
+                }
+
+                viewModel.logIn("tim@gmail.com","123456789")
 
                 val landingFragment = Dashboard()
                 //            // 4. Perform the fragment transaction to replace the current view
